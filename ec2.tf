@@ -5,6 +5,7 @@ resource "aws_instance" "web" {
   vpc_security_group_ids = ["${aws_security_group.vpc_task.id}"]
   subnet_id = "${aws_subnet.public1.id}"
   associate_public_ip_address = "true"
+  tags          = "${var.tags}"
 }
 resource "aws_instance" "mysql" {
   ami           = "${data.aws_ami.centos.id}" 
@@ -13,4 +14,5 @@ resource "aws_instance" "mysql" {
   vpc_security_group_ids = ["${aws_security_group.sql_task.id}"]
   subnet_id = "${aws_subnet.public2.id}"
   associate_public_ip_address = "true"
+  tags          = "${var.tags}"
 }
